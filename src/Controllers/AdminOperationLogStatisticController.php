@@ -30,9 +30,9 @@ class AdminOperationLogStatisticController extends AdminController
                 $roleModel = config('admin.database.roles_model');
                 $filter->equal('user.roles.id', __('admin-operation-log-statistic.fields.role_name'))
                     ->select($roleModel::all()->pluck('name', 'id'));
-                $filter->equal('user.invite_code', __('admin-users.fields.invite_code'));
-                $filter->like('user.username', __('admin-users.fields.username'));
-                $filter->like('user.name', __('admin-users.fields.name'));
+                $filter->equal('user.invite_code', __('admin-operation-log-statistic.fields.invite_code'));
+                $filter->like('user.username', __('admin-operation-log-statistic.fields.username'));
+                $filter->like('user.name', __('admin-operation-log-statistic.fields.name'));
             });
             $filter->column(1 / 2, function (Grid\Filter $filter) {
                 $filter->between('date', __('admin-operation-log-statistic.fields.date'))->date();
@@ -50,9 +50,9 @@ class AdminOperationLogStatisticController extends AdminController
         ]);
 
         $grid->column('date', __('admin-operation-log-statistic.fields.date'));
-        $grid->column('user_id', __('User Id'));
-        $grid->column('user.username', __('admin-users.fields.username'));
-        $grid->column('user.name', __('admin-users.fields.name'));
+        $grid->column('user_id', __('admin-operation-log-statistic.fields.user_id'));
+        $grid->column('user.username', __('admin-operation-log-statistic.fields.username'));
+        $grid->column('user.name', __('admin-operation-log-statistic.fields.name'));
         $grid->column('role_name', __('admin-operation-log-statistic.fields.role_name'))
             ->display(function () {
                 return $this->user->roles->pluck('name');

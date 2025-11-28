@@ -47,7 +47,7 @@ class AdminOperationLogStatisticWarning extends BaseMail
     public function content()
     {
         return new Content(
-            view: 'operation-statistic.admin-operation-log-statistic-warning',
+            view: 'operation-statistic::mail.admin-operation-log-statistic-warning',
             with: [
                 'riskRecords' => $this->data,
                 'riskDate'    => $this->date->toDateString(),

@@ -1,8 +1,7 @@
 <?php
 
 return [
-    'labels' => [
-    ],
+    'labels' => [],
 
     'fields' => [
         "id" => "ID",
@@ -14,9 +13,11 @@ return [
         'total'      => '访问次数',
         'top_num'    => '访问最高路由次数',
         'top_path'   => '访问最高路由',
+        'user_id'    => '用户ID',
+        'username'   => '用户名',
+        'name'       => '姓名',
+        'invite_code' => '邀请码',
     ],
 
-    'options' => [
-
-    ],
+    'options' => [],
 ];

@@ -1,8 +1,7 @@
 <?php
 
 return [
-    'labels' => [
-    ],
+    'labels' => [],
 
     'fields' => [
         "id" => "ID",
@@ -14,9 +13,11 @@ return [
         'total'      => 'Access Total',
         'top_num'    => 'Access Top',
         'top_path'   => 'Access Top Path',
+        'user_id'    => 'User ID',
+        'username'   => 'Username',
+        'name'       => 'Name',
+        'invite_code' => 'Invite Code',
     ],
 
-    'options' => [
-
-    ],
+    'options' => [],
 ];

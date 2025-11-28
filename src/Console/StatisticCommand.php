@@ -20,8 +20,8 @@ class StatisticCommand extends Command
 
     public function handle()
     {
-        $configKey  = 'request_rate_limit_count';
-        $countLimit = (int)config($configKey, 20);
+        $configKey  = 'admin-operation-log.request_rate_limit_count';
+        $countLimit = (int)config($configKey, 100);
         if ($countLimit < 1) {
             Log::error($this->description . "缺少配置[$configKey]或者配置[$configKey]不正确");
             return self::FAILURE;

@@ -38,7 +38,7 @@
                 <tr>
                     <td bgcolor="#2563eb" style="padding: 20px; text-align: center;">
                         <h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: bold;">系统异常风险操作监控报告</h1>
-                        <p style="margin: 5px 0 0 0; color: #e0e7ff; font-size: 12px;">{{ date('Y-m-d H:i:s') }} 自动生成 | 监控周期：最近24小时</p>
+                        <p style="margin: 5px 0 0 0; color: #e0e7ff; font-size: 12px;">监控周期：{{$riskDate}}</p>
                     </td>
                 </tr>
                 <!-- 邮件内容 -->
@@ -46,7 +46,7 @@
                     <td style="padding: 20px 25px;">
                         <p style="margin: 0 0 15px 0; color: #333; font-size: 14px;">尊敬的系统管理员：</p>
                         <p style="margin: 0 0 20px 0; color: #333; font-size: 14px; line-height: 1.8;">
-                            系统安全监控模块检测到<span style="color: #2563eb; font-weight: bold;">最近24小时内</span>平台出现<span style="color: #dc2626; font-weight: bold;">前十条高风险异常操作记录</span>，此类操作可能存在账号盗用、恶意攻击、权限越权等安全隐患。请管理员及时核查操作来源、处置风险，并采取针对性的防护措施。
+                            系统安全监控模块检测到平台出现<span style="color: #dc2626; font-weight: bold;">风险异常操作记录</span>，此类操作可能存在账号盗用、恶意攻击、权限越权等安全隐患。请管理员及时核查操作来源、处置风险，并采取针对性的防护措施。以下是前十条记录。
                         </p>
 
                         <!-- 核心表格：优化列宽+强制换行 -->
@@ -65,8 +65,8 @@
                                     <tr>
                                         <!-- 所有单元格强制换行，避免溢出 -->
                                         <td style="padding: 12px; text-align: left; color: #333; font-size: 13px; border-bottom: 1px solid #eee; word-break: break-all;">{{ $riskRecord->user_id }}</td>
-                                        <td style="padding: 12px; text-align: left; color: #333; font-size: 13px; border-bottom: 1px solid #eee; word-break: break-all;">{{ sprintf('%s(%s)', $riskRecord->adminUser->name, $riskRecord->adminUser->username) }}</td>
-                                        <td style="padding: 12px; text-align: left; color: #333; font-size: 13px; border-bottom: 1px solid #eee; word-break: break-all;">{{ $riskRecord->adminUser->getRoleName()['CN'] ?? '未知角色' }}</td>
+                                        <td style="padding: 12px; text-align: left; color: #333; font-size: 13px; border-bottom: 1px solid #eee; word-break: break-all;">{{ sprintf('%s(%s)', $riskRecord->user?->name, $riskRecord->user?->username) }}</td>
+                                        <td style="padding: 12px; text-align: left; color: #333; font-size: 13px; border-bottom: 1px solid #eee; word-break: break-all;">{{ $riskRecord->user?->roles?->pluck('name')?->implode(',') ?? '未知角色' }}</td>
                                         <td style="padding: 12px; text-align: left; color: #333; font-size: 13px; border-bottom: 1px solid #eee; word-break: break-all;">{{ $riskRecord->total ?? 0 }}</td>
                                         <td style="padding: 12px; text-align: left; font-size: 13px; border-bottom: 1px solid #eee; word-break: break-all;">{{ $riskRecord->top_num ?? 0 }}</td>
                                         <!-- 路由列单独优化行高，提升换行可读性 -->
@@ -86,7 +86,7 @@
                             <p style="margin: 0 0 5px 0; color: #333; font-size: 13px;">3. 检查接口权限：若为权限越权操作，及时修复接口的权限校验逻辑，避免漏洞被利用；</p>
                             <p><?=$riskDate?></p>
 
-                            <p style="margin: 0; color: #333; font-size: 13px;">4. 查看详细日志：可通过<a target="_blank" href="{{ route('admin.system.admin-operation-log-statistic.index', ['date' => ['start'=>$riskDate,'end'=>$riskDate]]) }}" style="color: #2563eb; text-decoration: underline;">系统日志中心</a>查看完整操作记录，定位风险根源。</p>
+                            <p style="margin: 0; color: #333; font-size: 13px;">4. 查看详细日志：可通过<a target="_blank" href="{{ route('admin.system.admin-operation-log-statistics.index', ['date' => ['start'=>$riskDate,'end'=>$riskDate]]) }}" style="color: #2563eb; text-decoration: underline;">系统日志中心</a>查看完整操作记录，定位风险根源。</p>
                         </div>
 
                         <p style="margin: 0 0 0 0; color: #333; font-size: 14px;">请管理员尽快处理上述风险，确保平台数据和用户账号的安全稳定！</p>

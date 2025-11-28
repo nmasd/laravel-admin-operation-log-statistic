@@ -39,11 +39,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([__DIR__ . '/../config' => config_path()], 'operation-log-statistic-config');
-            if (version_compare($this->app->version(), '9.0.0', '>=')) {
-                $this->publishes([__DIR__ . '/../resources/lang' => base_path('lang')], 'operation-log-statistic-lang');
-            } else {
-                $this->publishes([__DIR__ . '/../resources/lang' => resource_path('lang')], 'operation-log-statistic-lang');
-            }
+
+            $this->publishes([__DIR__ . '/../resources/lang' => resource_path('lang')], 'operation-log-statistic-lang');
+           
             $this->publishes([__DIR__ . '/../database/migrations' => database_path('migrations')], 'operation-log-statistic-migrations');
         }
     }
