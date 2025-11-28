@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'labels' => [],
+    'labels' => [
+        'list' => '操作记录预警',
+    ],
 
     'fields' => [
         "id" => "ID",

@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'labels' => [],
+    'labels' => [
+        'list' => 'operation log statistic',
+    ],
 
     'fields' => [
         "id" => "ID",

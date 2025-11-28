@@ -10,7 +10,7 @@ class AdminOperationLogStatisticController extends AdminController
 
     public function title()
     {
-        return __('admin.menu_titles.admin_operation_log_statistic');
+        return __('admin-operation-log-statistic.labels.list');
     }
 
     /**
