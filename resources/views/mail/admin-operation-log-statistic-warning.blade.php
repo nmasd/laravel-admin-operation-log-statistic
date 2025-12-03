@@ -165,7 +165,7 @@
                     <td bgcolor="#f8f8f8" style="padding: 15px; text-align: center;">
                         <p style="margin: 0; color: #999; font-size: 12px; line-height: 1.5;">
                             本邮件由系统安全监控模块自动发送 | 版权所有
-                            © {{ date('Y') }} {{ config('app.name', '系统管理平台') }} | 管理后台：{{ config('app.url') }}
+                            © {{ date('Y') }} {{ config('app.name', '系统管理平台') }}
                             /admin
                         </p>
                     </td>
