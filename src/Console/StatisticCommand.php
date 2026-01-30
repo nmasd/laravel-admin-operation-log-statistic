@@ -63,9 +63,12 @@ class StatisticCommand extends Command
 
                 $top = $item->sortByDesc('num')->first();
 
+                $company_id = config('admin.database.company_users_model')::where('admin_user_id', $top['user_id'])->value('company_id');
+
                 $item = [
                     'date'       => $statisticDate->toDateString(),
                     'user_id'    => $top['user_id'],
+                    'company_id' => $company_id,
                     'total'      => $item->sum('num'),
                     'top_path'   => $top['path'],
                     'top_num'    => $top['num'],
